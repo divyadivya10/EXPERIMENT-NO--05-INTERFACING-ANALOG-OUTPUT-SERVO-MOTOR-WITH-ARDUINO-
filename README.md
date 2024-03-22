@@ -1,8 +1,8 @@
-###  DATE: 
+###  DATE: 22-03-2024
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
+###  NAME: Divya R
+###  ROLL NO :212222040040
+###  DEPARTMENT: CSE
 
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
@@ -59,7 +59,21 @@ CIRCUIT DIAGRAM
  
  ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
 
-### FIGURE 04 CIRCUIT DIAGRAM
+### FIGURE 04 
+
+CIRCUIT DIAGRAM
+![Screenshot 2024-03-22 161601](https://github.com/divyadivya10/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119560271/638b9adf-4375-4d4a-9247-70845a2b9246)
+
+SCHEMATIC DIAGRAM
+![Screenshot 2024-03-22 162017](https://github.com/divyadivya10/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119560271/21fe7f6d-6924-4126-983a-d8023c03581b)
+
+GRAPHICAL REPRESENTATION
+![Screenshot 2024-03-22 161918](https://github.com/divyadivya10/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119560271/9252d0eb-6ede-46a0-a6d3-7c2bb7f0e01b)
+
+
+
+
+
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -74,6 +88,59 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
+
+```
+#include<Servo.h>
+Servo sr1;
+int pos=0;
+int red=9;
+int green=8;
+
+void setup()
+{
+  sr1.attach(6);
+  Serial.begin(9600);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+  
+}
+
+void loop()
+{
+  for(pos=0;pos<=180;pos+=5)
+  {
+    sr1.write(pos);
+      delay(200);
+    Serial.println(pos);
+    if(pos>=120)
+  {
+    digitalWrite(red,HIGH);
+      delay(200);
+    digitalWrite(red,LOW);
+      delay(200);
+  }
+  }
+    
+
+   for(pos=180;pos>=0;pos-=5)
+ {
+    sr1.write(pos);
+       delay(200);
+     Serial.println(pos);
+      if(pos<=100)
+  {
+    digitalWrite(green,HIGH);
+      delay(200);
+    digitalWrite(green,LOW);
+      delay(200);
+    
+  }
+ }
+  
+
+}
+
+```
  
 
 
